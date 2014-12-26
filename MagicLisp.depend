@@ -1,0 +1,126 @@
+# depslib dependency file v1.0
+1415957323 source:d:\shared_folder\magiclisp\main.c
+	"stdio.h"
+	"conio.h"
+	<termios.h>
+	"string.h"
+	"malloc.h"
+	"BaseCalculation.h"
+	"MLEngine.h"
+	"MLLib.h"
+	"MLDebug.h"
+
+1415951347 source:d:\shared_folder\magiclisp\mlengine.c
+	"MLEngine.h"
+	"LinuxList.h"
+	<stdlib.h>
+	"stdio.h"
+	"string.h"
+	"MLDebug.h"
+
+1415932060 d:\shared_folder\magiclisp\mlengine.h
+	"LinuxList.h"
+
+1415932084 d:\shared_folder\magiclisp\linuxlist.h
+	"sys/types.h"
+	"stddef.h"
+
+1415945882 source:d:\shared_folder\magiclisp\basecalculation.c
+	"stdio.h"
+	"MLDebug.h"
+
+1415932072 d:\shared_folder\magiclisp\basecalculation.h
+
+1415957134 source:d:\shared_folder\magiclisp\mllib.c
+	"stdio.h"
+	"stdlib.h"
+	"string.h"
+	"BaseCalculation.h"
+	"MLLib.h"
+	"LinuxList.h"
+	"MLDebug.h"
+
+1415867942 d:\shared_folder\magiclisp\mllib.h
+	"MLEngine.h"
+
+1415353606 source:c:\documents\#magiclisp\magiclisp\basecalculation.c
+	"stdio.h"
+
+1415540083 source:c:\documents\#magiclisp\magiclisp\main.c
+	"stdio.h"
+	"conio.h"
+	"string.h"
+	"BaseCalculation.h"
+	"MLEngine.h"
+	"MLLib.h"
+
+1415267310 c:\documents\#magiclisp\magiclisp\basecalculation.h
+
+1415348530 c:\documents\#magiclisp\magiclisp\mlengine.h
+	"LinuxList.h"
+
+1412996150 c:\documents\#magiclisp\magiclisp\linuxlist.h
+	"sys/types.h"
+	"stddef.h"
+
+1415352186 c:\documents\#magiclisp\magiclisp\mllib.h
+	"MLEngine.h"
+
+1415540242 source:c:\documents\#magiclisp\magiclisp\mlengine.c
+	"MLEngine.h"
+	"LinuxList.h"
+	<stdlib.h>
+	"stdio.h"
+	"string.h"
+
+1415354484 source:c:\documents\#magiclisp\magiclisp\mllib.c
+	"stdio.h"
+	"stdlib.h"
+	"string.h"
+	"BaseCalculation.h"
+	"MLLib.h"
+	"LinuxList.h"
+
+1415946166 d:\shared_folder\magiclisp\mldebug.h
+
+1415946159 source:d:\shared_folder\magiclisp\mldebug.c
+
+1415945884 source:d:\htl's documents\magiclisp\basecalculation.c
+	"stdio.h"
+	"MLDebug.h"
+
+1415946168 d:\htl's documents\magiclisp\mldebug.h
+
+1415957324 source:d:\htl's documents\magiclisp\main.c
+	"stdio.h"
+	"conio.h"
+	<termios.h>
+	"string.h"
+	"malloc.h"
+	"BaseCalculation.h"
+	"MLEngine.h"
+	"MLLib.h"
+	"MLDebug.h"
+
+1415932074 d:\htl's documents\magiclisp\basecalculation.h
+
+1415932062 d:\htl's documents\magiclisp\mlengine.h
+	"LinuxList.h"
+
+1415932086 d:\htl's documents\magiclisp\linuxlist.h
+	"sys/types.h"
+	"stddef.h"
+
+1415867944 d:\htl's documents\magiclisp\mllib.h
+	"MLEngine.h"
+
+1415946160 source:d:\htl's documents\magiclisp\mldebug.c
+
+1415951348 source:d:\htl's documents\magiclisp\mlengine.c
+	"MLEngine.h"
+	"LinuxList.h"
+	<stdlib.h>
+	"stdio.h"
+	"string.h"
+	"MLDebug.h"
+
