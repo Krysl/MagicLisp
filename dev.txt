@@ -83,15 +83,14 @@ x ( var br 8 ( * ( + 3 7 ) ( - 5 3 ) ) )
 
 ( var_show_all )
 
+( var a 3 4 ) ( var b 3 4 )
+( var sum_of_squares 8 `( + ( * `,( varg a ) `,( varg a ) ) ( * `,( varg b ) `,( varg b ) ) ) )
+( eval ( varg sum_of_squares ) )
+
 ( var a 3 4 ) ( var b 3 4 ) ( var sum_of_squares 8 `( + ( * `,( varg a ) `,( varg a ) ) ( * `,( varg b ) `,( varg b ) ) ) ) ( eval ( varg sum_of_squares ) )
-
-
-
-
-
-
-
-
+will be wrong!!!   `( var a 3 4 ) `( var b 3 4 ) `( var sum_of_squares 8 `( + ( * `,( varg a ) `,( varg a ) ) ( * `,( varg b ) `,( varg b ) ) ) ) `( eval ( varg sum_of_squares ) )
+`,( var a 3 4 ) `,( var b 3 4 ) `,( var sum_of_squares 8 `( + ( * `,( varg a ) `,( varg a ) ) ( * `,( varg b ) `,( varg b ) ) ) ) `,( eval ( varg sum_of_squares ) )
+,( var a 3 4 ) ,( var b 3 4 ) ,( var sum_of_squares 8 `( + ( * `,( varg a ) `,( varg a ) ) ( * `,( varg b ) `,( varg b ) ) ) ) ,( eval ( varg sum_of_squares ) )
 
 
 

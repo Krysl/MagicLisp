@@ -149,6 +149,7 @@ int main()
                 }
             }
 #else
+    #if 0
             pch = getFirstArg(cmdArgs[0], pch);
             if(!strcmp(cmdArgs[0],"("))
             {
@@ -165,6 +166,9 @@ int main()
             {
                 printf("unknow cmd:%s.maybe you need input \"(\" first\n",cmdArgs[0]);
             }
+    #else
+            add2rootWL2(&pch);
+    #endif // 0
 #endif
         }
     }

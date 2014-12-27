@@ -34,4 +34,5 @@ void MLLib_init();
 char* getFirstArg(char *dest, char *src);
 void getAllArgs(char cmdArgs[][ARG_CHARLEN],char *pch);
 void* add2rootWL(char **pch);
+int add2rootWL2(char **pch);
 #endif // MLLIB_H_INCLUDED

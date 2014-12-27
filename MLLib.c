@@ -209,6 +209,11 @@ char* getFirstArg(char *dest, char *src)
     int i = 0;
     while (*src == ' ')
                 src++;
+    if (*src == 0)
+    {
+        dest[0] = 0;
+        return 0;
+    }
     while ( (*src != ' ') && (*src != 0) )
     {
         dest[i++] = *src++;
@@ -282,7 +287,7 @@ NEXT_BLOCK:
         }
         else if((!strcmp(tmpcmd,"`,(")) || (!strcmp(tmpcmd,",`(")) )
         {///执行引用
-            space(g_spaces);printf("``(\n");
+            space(g_spaces);printf("`,(\n");
             pMLFN->argFlag &= ((~0b10) << i);///pMLFN->argFlag |= 0b10 << i;
             g_spaces++;
             tmp = add2branchWL(pch);
@@ -294,7 +299,7 @@ NEXT_BLOCK:
         }
         else if(!strcmp(tmpcmd,",("))//下一层
         {///执行
-            space(g_spaces);printf("``(\n");
+            space(g_spaces);printf(",(\n");
             pMLFN->argFlag |= 0b10 << i;
             g_spaces++;
             tmp = add2branchWL(pch);
@@ -408,7 +413,7 @@ NEXT_BLOCK:
         }
         else if(!strcmp(tmpcmd,",("))//下一层
         {///执行
-            space(g_spaces);printf("``(\n");
+            space(g_spaces);printf(",(\n");
             pMLFN->argFlag |= 0b10 << i;
             g_spaces++;
             tmp = add2branchWL(pch);
@@ -471,6 +476,88 @@ ADD_FUN:
 END:
     //free(rootfun);
     return rootfun;
+}
+int add2rootWL2(char **pch)
+{
+    //MLFn pFn;
+    //EMLFnType fnType;
+    int i,ret;
+    char tmpcmd[ARG_CHARLEN];
+    //struct list_head *rootfun = (struct list_head *)malloc(sizeof(struct list_head));
+    //INIT_LIST_HEAD(rootfun);
+    //MLFnNode_tp pMLFN;
+    void *tmp;
+NEXT_BLOCK:
+    //printf("(\n");
+    g_spaces = 1;
+//    *pch = getFirstArg(tmpcmd, *pch);
+//    if(!strcmp(tmpcmd,")"))
+//        goto END;
+//    //暂不支持树枝返回值为函数名，假定第一字符串是函数名
+//    pFn = getFnByName(tmpcmd, &fnType);
+//    pMLFN = (MLFnNode_tp)malloc(sizeof(MLFnNode_t));
+//    pMLFN->fn = pFn;
+//    pMLFN->type = fnType;
+//    pMLFN->arg = malloc(fnType*sizeof(void*));
+//    ///pMLFN->argFlag = argFlag;
+//    pMLFN->argFlag = 0;//0b1;
+    //printf("fnType=%d\n",fnType);
+    //for(i = 0; i <= fnType /*&& *pch!=0*/;)
+    while(getFirstArg(tmpcmd, *pch))//还有未处理的字符
+    {
+        //printf("i=%d\n",i);
+        *pch = getFirstArg(tmpcmd, *pch);
+        if(!strcmp(tmpcmd,"("))//下一层
+        {
+            space(g_spaces);printf("(\n");
+            g_spaces++;
+            tmp = add2branchWL(pch);//add2rootWL(pch);//pMLFN->arg[i] = add2branchWL(*pch,rootfun);
+            ret = MLEngineRun(tmp);//*(int *)(pMLFN->arg[i]) = MLEngineRun(tmp);
+            space(g_spaces);printf("=%d\n",ret);
+            continue;
+        }
+        else if(!strcmp(tmpcmd,"`("))//下一层
+        {///引用
+            space(g_spaces);printf("`(\n");
+            g_spaces++;
+            tmp = add2branchWL(pch);
+            space(g_spaces);printf("引用为%p\n",tmp);
+            continue;
+        }
+        else if((!strcmp(tmpcmd,"`,(")) || (!strcmp(tmpcmd,",`(")) )//下一层
+        {///执行引用
+            space(g_spaces);printf("`,(\n");
+            g_spaces++;
+            tmp = add2branchWL(pch);
+            ret = MLEngineRun(tmp);//*(int *)(pMLFN->arg[i]) = MLEngineRun(tmp);
+            space(g_spaces);printf("=%d\n", ret);
+            continue;
+        }
+        else if(!strcmp(tmpcmd,",("))//下一层
+        {///执行
+            space(g_spaces);printf(",(\n");
+            g_spaces++;
+            tmp = add2branchWL(pch);
+            ret = MLEngineRun(tmp);//*(int *)(pMLFN->arg[i]) = MLEngineRun(tmp);
+            space(g_spaces);printf("=%d\n",ret);
+            continue;
+        }
+        else if(!strcmp(tmpcmd,")"))//当前函数pFn的右括号
+        {
+            g_spaces--;
+            continue;//一棵树处理完成
+        }
+        else if(0 == *tmpcmd)
+        {
+            g_spaces--;
+            break;
+        }
+        else
+        {
+            printf("Error code (%s)\n", tmpcmd);
+        }
+    }
+    return ret;
 }
 
 
